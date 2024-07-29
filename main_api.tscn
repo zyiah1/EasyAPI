@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2kl6io5sxvvb"]
+
+[ext_resource type="Script" path="res://main_api.gd" id="1_i86ql"]
+
+[node name="MainAPI" type="Node2D"]
+script = ExtResource("1_i86ql")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Request" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -197.0
+offset_right = 220.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Request"
+
+[node name="URL" type="LineEdit" parent="CanvasLayer"]
+offset_left = 165.0
+offset_top = 56.0
+offset_right = 988.0
+offset_bottom = 109.0
+placeholder_text = "https://api.com"
+alignment = 1
+
+[node name="Index" type="LineEdit" parent="CanvasLayer"]
+offset_left = 360.0
+offset_top = 221.0
+offset_right = 558.0
+offset_bottom = 274.0
+placeholder_text = "Index (-1 = none)"
+alignment = 1
+
+[node name="Key" type="LineEdit" parent="CanvasLayer"]
+offset_left = 594.0
+offset_top = 221.0
+offset_right = 792.0
+offset_bottom = 274.0
+placeholder_text = "Key"
+alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.0
+offset_top = -20.5
+offset_right = 315.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+selected = 0
+item_count = 2
+popup/item_0/text = "text"
+popup/item_1/text = "image"
+popup/item_1/id = 1
+
+[node name="ResponseText" type="RichTextLabel" parent="CanvasLayer"]
+offset_top = 358.0
+offset_right = 1154.0
+offset_bottom = 644.0
+focus_mode = 2
+selection_enabled = true
+
+[node name="ResponseImage" type="AspectRatioContainer" parent="CanvasLayer"]
+clip_contents = true
+offset_top = 352.0
+offset_right = 1150.0
+offset_bottom = 650.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ResponseImage"]
+layout_mode = 2
+stretch_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/Request" to="." method="_on_request_pressed"]
+[connection signal="text_changed" from="CanvasLayer/URL" to="." method="_on_url_text_changed"]
+[connection signal="item_selected" from="CanvasLayer/OptionButton" to="." method="_on_option_button_item_selected"]
